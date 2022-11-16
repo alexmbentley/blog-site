@@ -14,15 +14,15 @@ const Header = () => {
   //   }
   // `)
 
-  // const [isActive, setIsActive] = useState(false)
+  const [isActive, setIsActive] = useState(false)
 
-  // const handleClick = () => {
-  //   // 👇️ toggle
-  //   setIsActive(current => !current)
-  //   console.log(isActive, "<< is active")
-  //   // 👇️ or set to true
-  //   // setIsActive(true);
-  // }
+  const handleClick = () => {
+    // 👇️ toggle
+    setIsActive(current => !current)
+    console.log(isActive, "<< is active")
+    // 👇️ or set to true
+    // setIsActive(true);
+  }
 
   return (
     <header>
@@ -36,7 +36,7 @@ const Header = () => {
           />
         </Link>
 
-        <ul className={headerStyles.navList}>
+        <ul className={isActive ? headerStyles.navList2 : headerStyles.navList}>
           <li>
             <Link
               className={headerStyles.navItem}
@@ -74,13 +74,15 @@ const Header = () => {
             </Link>
           </li>
         </ul>
-        {/* <button onClick={handleClick} className={headerStyles.menu}> */}
-        <div className={headerStyles.menu}>
+
+        <div
+          onClick={() => setIsActive(current => !current)}
+          className={headerStyles.menu}
+        >
           <div className={headerStyles.menuLine}></div>
           <div className={headerStyles.menuLine}></div>
           <div className={headerStyles.menuLine}></div>
         </div>
-        {/* </button> */}
       </nav>
     </header>
   )
